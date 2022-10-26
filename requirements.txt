@@ -1,0 +1,9 @@
+# PIP Requirements
+Django
+django-multi-form-view ~= 2.0.1
+six ~= 1.16.0
+requests ~= 2.28.1
+django-ratelimit ~= 3.0.1
+djangorestframework ~= 3.14.0
+markdown ~= 3.4.1
+django-filter ~= 22.1
