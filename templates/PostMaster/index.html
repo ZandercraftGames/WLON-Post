@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WL Post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="{%  static 'index.css' %}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'favicon.png' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="{% static 'logo.png' %}" alt="WLON Post Logo" width="130" height="50" class="d-inline-block align-text-top"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/postmaster/">Postmaster Portal</a>
+                </li>
+            </ul>
+            <!-- Search Form -->
+            <form class="d-flex" action="{{ request.path }}" method="post">
+                {% csrf_token %}
+                {{ searchForm }}
+{#              <input class="form-control me-2" id="tracking_form_contents" type="search" placeholder="Track a Package" required>#}
+                <button class="btn btn-danger" id="id_tracking_submit" type="submit">Track</button>
+                {% if searchForm.errors %}
+                    <br />
+                    {% for field in searchForm %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger tracking_error">
+                                <strong>{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in searchForm.non_field_errors %}
+                        <div class="alert alert-danger tracking_error">
+                            <span><strong>{{ error|escape }}</strong></span>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Javascript Warning -->
+    <noscript>
+        <div class="alert alert-danger" role="alert">
+            Warning! Although we have designed this site with minimal scripting in mind, some elements may not work without Javascript enabled. <br />
+            For an optimal experience, especially on mobile devices, ensure that your browser is capable of running Javascript code.
+        </div>
+    </noscript>
+
+    <!-- Tracking and Scripts -->
+    <script src="{% static 'index.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <noscript>
+        <img src="https://track.zandercraft.ca/ingress/0a898cef-7466-47cb-926e-904c641ea728/pixel.gif" alt="zc first-party data">
+    </noscript>
+    <script defer src="https://track.zandercraft.ca/ingress/0a898cef-7466-47cb-926e-904c641ea728/script.js"></script>
+</body>
+</html>

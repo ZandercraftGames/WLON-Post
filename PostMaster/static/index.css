@@ -1,0 +1,11 @@
+body {background: #2f2f2f;}
+#id_tracking_code, #id_tracking_submit {height: 40px;}
+span.tracking_error {
+    height: 40px;
+    width: 1000px;
+    position: relative;
+}
+
+div.tracking_box {
+    background: #414141;
+}
