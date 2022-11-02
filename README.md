@@ -1,4 +1,5 @@
-# WLON-Post
+# WLON-Post  
+A django application for managing the tracking of packages. Created for use by members of the Eternal Realms Minecraft server.
 
 ## Setup
 
