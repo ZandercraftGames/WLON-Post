@@ -2,7 +2,7 @@
 A django application for managing the tracking of packages. Created for use by members of the Eternal Realms Minecraft server.
 
 ## Setup  
-1) Rename the `settings.py.example` to `settings.py` and fill in the settings to customize it to your liking.  
+1) Rename the `WLONPost/settings.py.example` to `settings.py` and fill in the settings to customize it to your liking.  
 2) Install the required dependencies:  
 ```commandline
 pip install -r requirements.txt
